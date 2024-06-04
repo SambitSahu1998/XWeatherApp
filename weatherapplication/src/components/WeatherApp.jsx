@@ -16,10 +16,12 @@ function WeatherApp() {
       );
       if (!response.ok) throw new Error("City not found");
       const data = await response.json();
-      setWeatherData(data);
+      setTimeout(() => {
+        setWeatherData(data);
+        setLoading(false);
+      }, 1000);
     } catch (err) {
       alert("Failed to fetch weather data");
-    } finally {
       setLoading(false);
     }
   };
